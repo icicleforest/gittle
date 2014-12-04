@@ -161,8 +161,9 @@ def diff_changes_paths(object_store, basepath, changes, filter_binary=True):
        in the working directory
     """
     pairs = changes_to_pairs(changes)
-    readable_pairs = filter(is_readable_change(object_store), pairs)
-    unreadable_pairs = filter(is_unreadable_change(object_store), pairs)
+    #only check if old blob is readable/unreadable
+    readable_pairs = filter(is_readable_change(object_store), [pair[0] for pair in pairs])
+    unreadable_pairs = filter(is_unreadable_change(object_store), [pair[0] for pair in pairs])
 
     blobs = changes_to_blobs(object_store, basepath, readable_pairs)
 
