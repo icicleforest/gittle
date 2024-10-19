@@ -95,7 +95,8 @@ class Gittle(object):
     PATTERN_MODIFIED = (True, True)
 
     # Permissions
-    MODE_DIRECTORY = 040000  # Used to tell if a tree entry is a directory
+    #MODE_DIRECTORY = 040000  # Used to tell if a tree entry is a directory
+    MODE_DIRECTORY = '040000' # Used to tell if a tree entry is a directory
 
     # Tree depth
     MAX_TREE_DEPTH = 1000
