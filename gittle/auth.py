@@ -5,7 +5,8 @@ try:
     from cStringIO import StringIO
 except ImportError:
     # Fallback to pure python if not available
-    from StringIO import StringIO
+    #from StringIO import StringIO
+    from io import StringIO
 
 
 # Paramiko imports
