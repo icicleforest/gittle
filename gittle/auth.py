@@ -8,6 +8,7 @@ except ImportError:
     #from StringIO import StringIO
     from io import StringIO
 
+basestring = str
 
 # Paramiko imports
 try:

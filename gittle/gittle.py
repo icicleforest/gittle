@@ -363,7 +363,11 @@ class Gittle(object):
     def fetch_remote(self, origin_uri=None):
         # Get client
         client, remote_path = self.get_client(origin_uri=origin_uri)
-        client._fetch_capabilities.remove('thin-pack')
+        try:
+            client._fetch_capabilities.remove('thin-pack')
+        except KeyError:
+            pass
+            
         # Fetch data from remote repository
         remote_refs = client.fetch(remote_path, self.repo)
 
