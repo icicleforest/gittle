@@ -23,13 +23,13 @@ setup_kwargs = {
     the python stdlib, dulwich and paramiko (optional).
     """,
     'packages': ['gittle', 'gittle.utils'],
-    #'install_requires': [
+    'install_requires': [
     # PyPI
     #'paramiko>=1.10',
     #'pycrypto>=2.6',
     #'dulwich>=0.9.7',
-    #'funky>=0.0.2',
-    #],
+    'funky>=0.0.2',
+    ],
 }
 
 
