@@ -3,9 +3,14 @@
 Gittle is a high-level pure-python git library.
 It builds upon dulwich which provides most of the low-level machinery
 
+This clone is for working with Python 3.10 (Pythonista 3.4)  
+Original: https://github.com/jsbain/gittle/  
+
 ## Install it
 
-    pip install gittle
+```
+pip install gittle
+```
 
 ## Examples :
 
