@@ -25,6 +25,10 @@ from gittle.auth import GittleAuth
 from gittle.exceptions import InvalidRemoteUrl
 from gittle import utils
 
+try:
+    _ = type(basestring)
+except NameError:
+    basestring = str
 
 # Exports
 __all__ = ('Gittle',)
@@ -366,8 +370,8 @@ class Gittle(object):
         try:
             client._fetch_capabilities.remove('thin-pack')
         except KeyError:
-            pass
-            
+            client._fetch_capabilities.remove(b'thin-pack')
+
         # Fetch data from remote repository
         remote_refs = client.fetch(remote_path, self.repo)
 
