@@ -104,5 +104,5 @@ def subpaths(root_path, filters=None):
 
 
 @arglist
-def globers_to_regex(globers):
-    return map(fnmatch.translate, globers)
+def globers_to_regex(globers: list):
+    return [fnmatch.translate(g) for g in globers]

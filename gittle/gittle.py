@@ -269,8 +269,9 @@ class Gittle(object):
         gitignore_filename = os.path.join(self.path, '.gitignore')
         if not os.path.exists(gitignore_filename):
             return []
-        lines = open(gitignore_filename).readlines()
-        globers = map(lambda line: line.rstrip(), lines)
+        with open(gitignore_filename, mode='r') as f:
+            lines = f.readlines()
+        globers = [l.rstrip() for l in lines]
         return utils.paths.globers_to_regex(globers)
 
     # Get the absolute path for a file in the git repo

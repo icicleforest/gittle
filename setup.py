@@ -6,7 +6,7 @@ Setup script for Gittle.
 
 from setuptools import setup, find_packages
 
-version_string = '0.4.0'
+version_string = '0.4.1'
 
 setup_kwargs = {
     'name': 'gittle',
