@@ -767,7 +767,9 @@ class Gittle(object):
     def _to_commit(self, commit_obj):
         """Allows methods to accept both SHA's or dulwich Commit objects as arguments
         """
-        if isinstance(commit_obj, basestring):
+        if isinstance(commit_obj, basestring):  # str
+            return self.repo[commit_obj.encode()]
+        elif isinstance(commit_obj, bytes):     # bytes
             return self.repo[commit_obj]
         return commit_obj
 
@@ -776,8 +778,10 @@ class Gittle(object):
         """
         if utils.git.is_sha(commit_obj):
             return commit_obj
-        elif isinstance(commit_obj, basestring):
+        elif isinstance(commit_obj, basestring):    # str
             # Can't use self[commit_obj] to avoid infinite recursion
+            commit_obj = self.repo[commit_obj.encode()]
+        elif isinstance(commit_obj, bytes):         # bytes
             commit_obj = self.repo[commit_obj]
         return commit_obj.id
 
@@ -814,7 +818,7 @@ class Gittle(object):
 
     def _parse_reference(self, ref_string):
         # COMMIT_REF~x
-        if '~' in ref_string:
+        if b'~' in ref_string:
             ref, count = ref_string.split('~')
             count = int(count)
             commit_sha = self._commit_sha(ref)
