@@ -12,6 +12,10 @@ from dulwich.patch import is_binary
 # Funky imports
 from funky import first, true_only, rest, negate, transform
 
+try:
+    _ = type(basestring)
+except NameError:
+    basestring = str
 
 def is_readable(store):
     def fn(info):
